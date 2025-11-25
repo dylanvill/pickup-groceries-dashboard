@@ -8,17 +8,54 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/@s
 import { Separator } from '@/@shadcn/components/ui/separator';
 import { CartItem } from '@/lib/types';
 
-interface CartProps {
-  items: CartItem[];
-  onUpdateQuantity: (productId: string, quantity: number) => void;
-  onRemoveItem: (productId: string) => void;
-}
-
-export function Cart({ items, onUpdateQuantity, onRemoveItem }: CartProps) {
+export function Cart() {
   const [isOpen, setIsOpen] = useState(false);
   
+  // Static sample data - placeholder for future integration
+  const items: CartItem[] = [
+    {
+      id: '1',
+      name: 'Fresh Organic Bananas',
+      price: 2.99,
+      image: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=300&h=300&fit=crop',
+      category: 'fruits',
+      description: 'Sweet, ripe organic bananas perfect for smoothies or snacking.',
+      inStock: true,
+      rating: 4.5,
+      quantity: 2,
+    },
+    {
+      id: '3',
+      name: 'Organic Spinach',
+      price: 3.49,
+      image: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=300&h=300&fit=crop',
+      category: 'vegetables',
+      description: 'Fresh organic baby spinach leaves, perfect for salads.',
+      inStock: true,
+      rating: 4.3,
+      quantity: 1,
+    },
+  ];
+
+  // Static calculated values
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+  // Placeholder callbacks - for future integration
+  const onUpdateQuantity = (productId: string, quantity: number) => {
+    // TODO: Implement quantity update logic
+    console.log('Update quantity for product:', productId, 'to:', quantity);
+  };
+
+  const onRemoveItem = (productId: string) => {
+    // TODO: Implement remove item logic
+    console.log('Remove item:', productId);
+  };
+
+  const onCheckout = () => {
+    // TODO: Implement checkout logic
+    console.log('Proceed to checkout with items:', items);
+  };
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -109,7 +146,7 @@ export function Cart({ items, onUpdateQuantity, onRemoveItem }: CartProps) {
                   <span>Total</span>
                   <span>${totalPrice.toFixed(2)}</span>
                 </div>
-                <Button className="w-full">
+                <Button className="w-full" onClick={onCheckout}>
                   Proceed to Checkout
                 </Button>
               </div>
