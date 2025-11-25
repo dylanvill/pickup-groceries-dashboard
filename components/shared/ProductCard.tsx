@@ -25,7 +25,7 @@ function ProductCard({ product, onAddToCart }: ProductCardProps) {
   };
 
   return (
-    <Card className="overflow-hidden gap-0 rounded-lg py-0">
+    <Card className="overflow-hidden gap-0 rounded-lg py-0 h-full flex flex-col">
       <AspectRatio ratio={1 / 1}>
         <Image
           src={product.imageUrl}
@@ -36,8 +36,8 @@ function ProductCard({ product, onAddToCart }: ProductCardProps) {
         />
       </AspectRatio>
 
-      <CardContent className="p-4">
-        <div className="space-y-2">
+      <CardContent className="p-4 flex-1 flex flex-col">
+        <div className="space-y-2 flex-1">
           <Body className="mb-0">{product.name}</Body>
           <div className="flex items-center justify-between">
             <Large>
@@ -45,7 +45,7 @@ function ProductCard({ product, onAddToCart }: ProductCardProps) {
               {product.price}
             </Large>
           </div>
-          <div className="flex flex-wrap gap-1 mt-2">
+          <div className="flex flex-wrap gap-1 mt-auto">
             {product.categories.map((category) => (
               <Badge key={category} variant="outline" className="text-xs">
                 {category}
@@ -55,7 +55,7 @@ function ProductCard({ product, onAddToCart }: ProductCardProps) {
         </div>
       </CardContent>
 
-      <CardFooter className="p-4 pt-0">
+      <CardFooter className="p-4 pt-0 mt-auto">
         <Button onClick={handleAddToCart} className="w-full" size="sm">
           <ShoppingCart className="h-4 w-4 mr-2" />
           Add to Cart

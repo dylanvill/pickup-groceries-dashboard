@@ -84,7 +84,7 @@ export default function Home() {
         <section>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
             {products.map((product) => (
-              <div key={product.id}>
+              <div key={product.id} className="h-full">
                 <ProductCard product={product} onAddToCart={handleAddToCart} />
               </div>
             ))}
