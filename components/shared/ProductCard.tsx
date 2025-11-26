@@ -5,7 +5,6 @@ import {
 } from "../../@shadcn/components/ui/card";
 import Image from "next/image";
 import { ShoppingCart } from "lucide-react";
-import { Badge } from "../../@shadcn/components/ui/badge";
 import { Button } from "../../@shadcn/components/ui/button";
 import Product from "../../models/Product";
 import { AspectRatio } from "../../@shadcn/components/ui/aspect-ratio";
@@ -22,23 +21,24 @@ function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    addToCart({ 
-      product, 
-      quantity: 1, 
-      total: product.price 
+    addToCart({
+      product,
+      quantity: 1,
+      total: product.price,
     });
   };
 
   return (
     <Card className="overflow-hidden gap-0 rounded-lg py-0 h-full flex flex-col">
       <AspectRatio ratio={1 / 1}>
-        <Image
-          src={product.imageUrl}
-          alt={product.name}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
+        {product.imageUrl && (
+          <Image
+            src={product.imageUrl}
+            alt={product.name}
+            fill
+            className="object-cover"
+          />
+        )}
       </AspectRatio>
 
       <CardContent className="p-4 flex-1 flex flex-col">
@@ -49,13 +49,6 @@ function ProductCard({ product }: ProductCardProps) {
               {CURRENCY}
               {product.price}
             </Large>
-          </div>
-          <div className="flex flex-wrap gap-1 mt-auto">
-            {product.categories.map((category) => (
-              <Badge key={category} variant="outline" className="text-xs">
-                {category}
-              </Badge>
-            ))}
           </div>
         </div>
       </CardContent>

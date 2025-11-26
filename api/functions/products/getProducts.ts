@@ -3,12 +3,8 @@ import customerApiClient from "../../config/customerApiClient";
 import { PaginationLinks, PaginationMeta } from "../../types/Pagination";
 import ProductResource from "./types/ProductResource";
 
-interface RawProductResource extends Omit<ProductResource, "createdAt"> {
-  createdAt: string;
-}
-
 export interface ProductResponse {
-  data: RawProductResource[];
+  data: ProductResource[];
   links: PaginationLinks;
   meta: PaginationMeta;
 }
@@ -36,7 +32,7 @@ const getProducts = async (): Promise<ProductResponse> => {
   }
 };
 
-const parseCreatedAt = (products: RawProductResource[]) => {
+const parseCreatedAt = (products: any[]) => {
   return products.map((product) => ({
     ...product,
     createdAt: dayjs(product.createdAt),
