@@ -72,12 +72,6 @@ export default function Home() {
     },
   ];
 
-  // Placeholder callback - for future integration
-  const handleAddToCart = (product: Product) => {
-    // TODO: Implement add to cart logic
-    console.log("Add to cart:", product.name);
-  };
-
   return (
     <div className="min-h-screen bg-gray-50">
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -85,7 +79,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
             {products.map((product) => (
               <div key={product.id} className="h-full">
-                <ProductCard product={product} onAddToCart={handleAddToCart} />
+                <ProductCard product={product} />
               </div>
             ))}
           </div>

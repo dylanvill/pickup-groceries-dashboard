@@ -8,20 +8,25 @@ import { ShoppingCart } from "lucide-react";
 import { Badge } from "../../@shadcn/components/ui/badge";
 import { Button } from "../../@shadcn/components/ui/button";
 import Product from "../../models/Product";
-import CartItem from "../../models/CartItem";
 import { AspectRatio } from "../../@shadcn/components/ui/aspect-ratio";
 import Body from "../typography/Body";
 import Large from "../typography/Large";
 import { CURRENCY } from "../../utils/constants";
+import { useCart } from "../../store/useCart";
 
 interface ProductCardProps {
   product: Product;
-  onAddToCart: (cartItem: CartItem) => void;
 }
 
-function ProductCard({ product, onAddToCart }: ProductCardProps) {
+function ProductCard({ product }: ProductCardProps) {
+  const { addToCart } = useCart();
+
   const handleAddToCart = () => {
-    onAddToCart({ ...product, quantity: 1, total: product.price });
+    addToCart({ 
+      product, 
+      quantity: 1, 
+      total: product.price 
+    });
   };
 
   return (
