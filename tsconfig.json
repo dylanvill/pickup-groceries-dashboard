@@ -20,7 +20,12 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@shadcn/*": ["./@shadcn/*"]
+      "@shadcn/*": ["./@shadcn/*"],
+      "@store/*": ["./store/*"],
+      "@components/*": ["./components/*"],
+      "@api/*": ["./api/*"],
+      "@models/*": ["./models/*"],
+      "@utils/*": ["./utils/*"]
     }
   },
   "include": [

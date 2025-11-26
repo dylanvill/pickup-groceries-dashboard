@@ -1,17 +1,13 @@
-import {
-  Card,
-  CardContent,
-  CardFooter,
-} from "../../@shadcn/components/ui/card";
-import Image from "next/image";
+import { Card, CardContent, CardFooter } from "@shadcn/components/ui/card";
 import { ShoppingCart } from "lucide-react";
-import { Button } from "../../@shadcn/components/ui/button";
-import Product from "../../models/Product";
-import { AspectRatio } from "../../@shadcn/components/ui/aspect-ratio";
-import Body from "../typography/Body";
-import Large from "../typography/Large";
-import { CURRENCY } from "../../utils/constants";
-import { useCart } from "../../store/useCart";
+import { Button } from "@shadcn/components/ui/button";
+import Product from "@models/Product";
+import { AspectRatio } from "@shadcn/components/ui/aspect-ratio";
+import Body from "@components/typography/Body";
+import Large from "@components/typography/Large";
+import { CURRENCY } from "@utils/constants";
+import { useCart } from "@store/useCart";
+import ProductImage from "./ProductImage";
 
 interface ProductCardProps {
   product: Product;
@@ -31,14 +27,7 @@ function ProductCard({ product }: ProductCardProps) {
   return (
     <Card className="overflow-hidden gap-0 rounded-lg py-0 h-full flex flex-col">
       <AspectRatio ratio={1 / 1}>
-        {product.imageUrl && (
-          <Image
-            src={product.imageUrl}
-            alt={product.name}
-            fill
-            className="object-cover"
-          />
-        )}
+        <ProductImage src={product?.imageUrl} alt={product.name} />
       </AspectRatio>
 
       <CardContent className="p-4 flex-1 flex flex-col">
