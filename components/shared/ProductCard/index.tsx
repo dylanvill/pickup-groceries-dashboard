@@ -8,6 +8,7 @@ import Large from "@components/typography/Large";
 import { CURRENCY } from "@utils/constants";
 import { useCart } from "@store/useCart";
 import ProductImage from "./ProductImage";
+import { toast } from "sonner";
 
 interface ProductCardProps {
   product: Product;
@@ -17,11 +18,12 @@ function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    addToCart({
-      product,
-      quantity: 1,
-      total: product.price,
-    });
+    toast.success("Event has been created.");
+    // addToCart({
+    //   product,
+    //   quantity: 1,
+    //   total: product.price,
+    // });
   };
 
   return (

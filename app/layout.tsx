@@ -8,6 +8,7 @@ import { SearchBar } from "./_components/SearchBar";
 import { Cart } from "./_components/Cart";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Toaster } from "../@shadcn/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,6 +45,7 @@ export default function RootLayout({
           </header>
           <div className="flex-1">{children}</div>
           <Footer />
+          <Toaster />
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </body>
