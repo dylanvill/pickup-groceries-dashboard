@@ -29,6 +29,14 @@ const nextConfig: NextConfig = {
     contentDispositionType: "attachment",
     minimumCacheTTL: 0,
   },
+  // Disable SSR globally
+  experimental: {
+    appDir: true,
+  },
+  // Force client-side rendering
+  output: "export",
+  trailingSlash: true,
+  distDir: "out",
 };
 
 export default nextConfig;
