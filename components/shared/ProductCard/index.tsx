@@ -9,6 +9,8 @@ import { CURRENCY } from "@utils/constants";
 import { useCart } from "@store/useCart";
 import ProductImage from "./ProductImage";
 import { toast } from "sonner";
+import Small from "../../typography/Small";
+import Strong from "../../typography/Strong";
 
 interface ProductCardProps {
   product: Product;
@@ -18,12 +20,12 @@ function ProductCard({ product }: ProductCardProps) {
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    toast.success("Event has been created.");
-    // addToCart({
-    //   product,
-    //   quantity: 1,
-    //   total: product.price,
-    // });
+    addToCart({
+      product,
+      quantity: 1,
+      total: product.price,
+    });
+    toast.success(<Small><Strong>{product.name}</Strong> has been added to your cart.</Small>);
   };
 
   return (

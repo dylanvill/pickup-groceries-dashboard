@@ -45,7 +45,7 @@ export default function RootLayout({
           </header>
           <div className="flex-1">{children}</div>
           <Footer />
-          <Toaster />
+          <Toaster position="top-center" richColors />
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </body>
