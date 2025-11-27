@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
-import customerApiClient from "../../config/customerApiClient";
-import { PaginationLinks, PaginationMeta } from "../../types/Pagination";
-import ProductResource from "./types/ProductResource";
+import customerApiClient from "@api/config/customerApiClient";
+import { PaginationLinks, PaginationMeta } from "@api/types/Pagination";
+import ProductResource from "@api/products/types/ProductResource";
 
 export interface ProductResponse {
   data: ProductResource[];

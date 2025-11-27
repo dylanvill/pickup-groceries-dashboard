@@ -1,32 +1,10 @@
 "use client";
 
 import ProductCard from "@/components/shared/ProductCard";
-import Product from "../models/Product";
-import getProducts from "../api/functions/products/getProducts";
-import { useQuery } from "@tanstack/react-query";
-import { GET_PRODUCTS_QUERY_KEY } from "../api/functions/products/types/ProductQueryKeys";
-import { useMemo } from "react";
+import useGetProducts from "@api/products/getProducts/useGetProducts";
 
 export default function Home() {
-  const { data } = useQuery({
-    queryKey: [GET_PRODUCTS_QUERY_KEY],
-    queryFn: getProducts,
-  });
-
-  const products = useMemo<Product[]>(() => {
-    if (!data?.data) return [];
-
-    return data.data.map(
-      (product): Product => ({
-        id: product.id,
-        name: product.name,
-        description: product.description,
-        price: product.price,
-        imageUrl: product.imageUrl,
-        categories: product.categories,
-      })
-    );
-  }, [data]);
+  const { products } = useGetProducts();
 
   return (
     <div className="min-h-screen bg-gray-50">
