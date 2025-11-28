@@ -8,6 +8,7 @@ import ExtraSmall from "@components/typography/ExtraSmall";
 import { CURRENCY } from "../../utils/constants";
 import Placeholder from "@/public/images/placeholder.png";
 import { useCart } from "../../store/useCart";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 export interface CartItemProps {
   productId: number;
@@ -25,6 +26,8 @@ function CartItem({
   imageUrl,
 }: CartItemProps) {
   const { updateQuantity, removeFromCart } = useCart();
+
+  const formattedPrice = formatCurrency(price);
 
   const handleQuantity = (type: string, productId: number) => {
     if (type === "increase") {
@@ -49,10 +52,7 @@ function CartItem({
           <Small>
             <Strong>{name}</Strong>
           </Small>
-          <Small>
-            {CURRENCY}
-            {price}
-          </Small>
+          <Small>{formattedPrice}</Small>
         </div>
         <div className="flex items-center gap-1">
           <Button

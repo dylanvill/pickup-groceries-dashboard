@@ -7,15 +7,29 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/@shadcn/components/ui/sheet";
-import { Separator } from "@/@shadcn/components/ui/separator";
-import CartButton from "../../components/shared/CartButton";
+import { Separator } from "@shadcn/components/ui/separator";
 import CartHeader from "./CartHeader";
 import { useCart } from "../../store/useCart";
 import CartItem from "./CartItem";
+import Body from "../../components/typography/Body";
+import Strong from "../../components/typography/Strong";
+import { formatCurrency } from "../../utils/formatCurrency";
+import dynamic from "next/dynamic";
+
+// Dynamically import CartButton with SSR disabled
+const CartButton = dynamic(() => import("./CartButton"), {
+  ssr: false,
+});
 
 export function Cart() {
   const [isOpen, setIsOpen] = useState(false);
-  const { items } = useCart();
+  const { items, getTotalPrice } = useCart();
+
+  const totalPrice = formatCurrency(getTotalPrice());
+
+  const handleContinueShoppingClicked = () => {
+    setIsOpen(false);
+  };
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -39,31 +53,25 @@ export function Cart() {
           ))}
         </div>
 
-        <div className="py-4 space-y-4">
-          <div className="flex justify-between text-sm">
-            <span>Subtotal</span>
-            <span>$12.47</span>
-          </div>
-          <div className="flex justify-between text-sm">
-            <span>Shipping</span>
-            <span>$2.99</span>
-          </div>
-          <div className="flex justify-between text-sm">
-            <span>Tax</span>
-            <span>$0.94</span>
-          </div>
-          <Separator />
-          <div className="flex justify-between font-medium">
-            <span>Total</span>
-            <span>$16.40</span>
-          </div>
+        <Separator className="my-6" />
 
-          <div className="space-y-2">
-            <Button className="w-full">Checkout</Button>
-            <Button variant="outline" className="w-full">
-              Continue Shopping
-            </Button>
-          </div>
+        <div className="flex justify-between px-4">
+          <Body>
+            <Strong>Total</Strong>
+          </Body>
+          <Body>
+            <Strong>{totalPrice}</Strong>
+          </Body>
+        </div>
+
+        <div className="px-4 mb-10 flex flex-col gap-y-2 mt-6">
+          <Button className="w-full">Checkout</Button>
+          <Button
+            variant="outline"
+            className="w-full"
+            onClick={handleContinueShoppingClicked}>
+            Continue Shopping
+          </Button>
         </div>
       </SheetContent>
     </Sheet>
