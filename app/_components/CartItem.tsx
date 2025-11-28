@@ -5,9 +5,9 @@ import { Minus, Plus, Trash2 } from "lucide-react";
 import Small from "@components/typography/Small";
 import Strong from "@components/typography/Strong";
 import ExtraSmall from "@components/typography/ExtraSmall";
-import { CURRENCY } from "../../../utils/constants";
+import { CURRENCY } from "../../utils/constants";
 import Placeholder from "@/public/images/placeholder.png";
-import { useCart } from "../../../store/useCart";
+import { useCart } from "../../store/useCart";
 
 export interface CartItemProps {
   productId: number;

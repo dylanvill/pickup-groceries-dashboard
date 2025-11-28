@@ -1,22 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, Minus, Trash2 } from "lucide-react";
 import { Button } from "@/@shadcn/components/ui/button";
 import {
   Sheet,
   SheetContent,
-  SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/@shadcn/components/ui/sheet";
 import { Separator } from "@/@shadcn/components/ui/separator";
-import Image from "next/image";
 import CartButton from "../../components/shared/CartButton";
-import CartSheet from "../../components/shared/CartSheet";
+import CartHeader from "./CartHeader";
+import { useCart } from "../../store/useCart";
+import CartItem from "./CartItem";
 
 export function Cart() {
   const [isOpen, setIsOpen] = useState(false);
+  const { items } = useCart();
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -25,7 +24,20 @@ export function Cart() {
       </SheetTrigger>
 
       <SheetContent className="flex flex-col h-full overflow-y-auto">
-        <CartSheet />
+        <CartHeader />
+
+        <div className="px-4 flex flex-col gap-y-3">
+          {items.map((item) => (
+            <CartItem
+              key={item.product.id}
+              productId={item.product.id}
+              name={item.product.name}
+              price={item.product.price}
+              quantity={item.quantity}
+              imageUrl={item.product.imageUrl}
+            />
+          ))}
+        </div>
 
         <div className="py-4 space-y-4">
           <div className="flex justify-between text-sm">

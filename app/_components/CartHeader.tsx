@@ -1,8 +1,9 @@
 import React, { useMemo } from "react";
-import { SheetHeader } from "../../../@shadcn/components/ui/sheet";
-import Heading from "../../typography/Heading";
-import Body from "../../typography/Body";
-import { useCart } from "../../../store/useCart";
+import { SheetHeader, SheetTitle } from "../../@shadcn/components/ui/sheet";
+import Heading from "../../components/typography/Heading";
+import Body from "../../components/typography/Body";
+import { useCart } from "../../store/useCart";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 function CartHeader() {
   const { getTotalItems } = useCart();
@@ -17,6 +18,9 @@ function CartHeader() {
 
   return (
     <SheetHeader className="gap-0">
+      <VisuallyHidden>
+        <SheetTitle>Your Cart</SheetTitle>
+      </VisuallyHidden>
       <Heading variant="h4">Your Cart</Heading>
       <Body>{label}</Body>
     </SheetHeader>
