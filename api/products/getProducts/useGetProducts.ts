@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import getProducts from "./getProductsFunction";
 import { useMemo } from "react";
-import Product from "@models/Product";
+import ProductModel from "@/models/ProductModel";
 import { GET_PRODUCTS_QUERY_KEY } from "@api/products/types/ProductQueryKeys";
 
 const useGetProducts = () => {
@@ -10,11 +10,11 @@ const useGetProducts = () => {
     queryFn: getProducts,
   });
 
-  const products = useMemo<Product[]>(() => {
+  const products = useMemo<ProductModel[]>(() => {
     if (!query.data?.data) return [];
 
     return query.data.data.map(
-      (product): Product => ({
+      (product): ProductModel => ({
         id: product.id,
         name: product.name,
         description: product.description,

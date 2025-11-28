@@ -1,7 +1,7 @@
 import { Card, CardContent, CardFooter } from "@shadcn/components/ui/card";
 import { ShoppingCart } from "lucide-react";
 import { Button } from "@shadcn/components/ui/button";
-import Product from "@models/Product";
+import ProductModel from "@/models/ProductModel";
 import { AspectRatio } from "@shadcn/components/ui/aspect-ratio";
 import Body from "@components/typography/Body";
 import Large from "@components/typography/Large";
@@ -13,7 +13,7 @@ import Small from "../../typography/Small";
 import Strong from "../../typography/Strong";
 
 interface ProductCardProps {
-  product: Product;
+  product: ProductModel;
 }
 
 function ProductCard({ product }: ProductCardProps) {

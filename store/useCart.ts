@@ -1,10 +1,10 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import CartItem from '../models/CartItem';
+import CartItemModel from '../models/CartItemModel';
 
 interface CartState {
-  items: CartItem[];
-  addToCart: (item: CartItem) => void;
+  items: CartItemModel[];
+  addToCart: (item: CartItemModel) => void;
   removeFromCart: (productId: number) => void;
   updateQuantity: (productId: number, quantity: number) => void;
   clearCart: () => void;
@@ -16,7 +16,7 @@ export const useCart = create<CartState>()(persist(
   (set, get) => ({
     items: [],
 
-    addToCart: (item: CartItem) => {
+    addToCart: (item: CartItemModel) => {
       set((state) => {
         const existingItem = state.items.find(cartItem => cartItem.product.id === item.product.id);
         
@@ -74,7 +74,7 @@ export const useCart = create<CartState>()(persist(
     },
 
     getTotalItems: () => {
-      return get().items.reduce((total, item) => total + item.quantity, 0);
+      return get().items.length;
     },
 
     getTotalPrice: () => {
