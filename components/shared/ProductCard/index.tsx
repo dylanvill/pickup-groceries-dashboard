@@ -29,7 +29,7 @@ function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <Card className="overflow-hidden gap-0 rounded-lg py-0 h-full flex flex-col">
+    <Card className="overflow-hidden gap-0 py-0 h-full flex flex-col">
       <AspectRatio ratio={1 / 1}>
         <ProductImage src={product?.imageUrl} alt={product.name} />
       </AspectRatio>
