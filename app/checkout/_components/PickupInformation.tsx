@@ -5,10 +5,22 @@ import {
   CardHeader,
   CardTitle,
 } from "../../../@shadcn/components/ui/card";
+import { 
+  FormField, 
+  FormItem, 
+  FormLabel, 
+  FormControl, 
+  FormMessage 
+} from "../../../@shadcn/components/ui/form";
 import { Label } from "../../../@shadcn/components/ui/label";
 import { Input } from "../../../@shadcn/components/ui/input";
+import { useFormContext } from "react-hook-form";
+import type { CheckoutFormData } from "../schemas/checkoutSchema";
+import Body from "../../../components/typography/Body";
 
 function PickupInformation() {
+  const form = useFormContext<CheckoutFormData>();
+
   return (
     <Card>
       <CardHeader>
@@ -17,29 +29,50 @@ function PickupInformation() {
       <CardContent className="space-y-4">
         <div>
           <Label>Pickup Address</Label>
-          <p className="text-sm text-muted-foreground mt-1">
+          <Body className="text-muted-foreground mt-1">
             Unit 2, 1234 Building, Etc Street, Makati City, Metro Manila
-          </p>
+          </Body>
         </div>
         <div>
           <Label>Business Name</Label>
-          <p className="text-sm text-muted-foreground mt-1">1234 Business</p>
+          <Body className="text-muted-foreground mt-1">1234 Business</Body>
         </div>
+        
         <div className="grid grid-cols-2 gap-4">
-          <div>
-            <Label htmlFor="pickupDate">Pickup Date</Label>
-            <Input id="pickupDate" type="date" />
-          </div>
-          <div>
-            <Label htmlFor="pickupTime">Pickup Time</Label>
-            <Input id="pickupTime" type="time" />
-          </div>
+          <FormField
+            control={form.control}
+            name="pickupDate"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Pickup Date</FormLabel>
+                <FormControl>
+                  <Input type="date" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="pickupTime"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Pickup Time</FormLabel>
+                <FormControl>
+                  <Input type="time" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </div>
+        
         <p className="text-xs text-muted-foreground">
           Note: This is an estimated pickup time. It&apos;s okay if you
           don&apos;t arrive exactly on time - this serves as a general estimate
           for planning purposes.
         </p>
+
         <div>
           <Label>Location Preview</Label>
           <div className="mt-2 w-full h-48 bg-gray-100 rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center">

@@ -7,7 +7,7 @@ interface BodyProps {
 }
 
 function Body({ children, className }: BodyProps) {
-  return <p className={cn("text-base text-dark", className)}>{children}</p>;
+  return <p className={cn("text-sm text-dark", className)}>{children}</p>;
 }
 
 export default Body;
