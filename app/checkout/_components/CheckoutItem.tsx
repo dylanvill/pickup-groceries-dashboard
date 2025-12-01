@@ -6,6 +6,8 @@ import { useMemo } from "react";
 import { formatCurrency } from "../../../utils/formatCurrency";
 import Small from "../../../components/typography/Small";
 import ExtraSmall from "../../../components/typography/ExtraSmall";
+import Body from "../../../components/typography/Body";
+import Strong from "../../../components/typography/Strong";
 
 export type CheckoutItemProps = Omit<CartItemModel, "total">;
 
@@ -13,6 +15,10 @@ function CheckoutItem({ product, quantity }: CheckoutItemProps) {
   const grandTotal = useMemo(() => {
     return formatCurrency(product.price * quantity);
   }, [product.price, quantity]);
+
+  const formattedPrice = useMemo(() => {
+    return formatCurrency(product.price);
+  }, [product.price]);
 
   return (
     <Card className="flex flex-row items-center gap-4 p-3 border rounded-lg">
@@ -22,11 +28,18 @@ function CheckoutItem({ product, quantity }: CheckoutItemProps) {
         </AspectRatio>
       </div>
       <div className="flex-1">
-        <h3 className="font-medium">{product.name}</h3>
+        <Body className="font-medium">
+          <Strong>{product.name}</Strong>
+        </Body>
+        <ExtraSmall className="text-muted-foreground">
+          Quantity: {quantity}
+        </ExtraSmall>
       </div>
       <div className="text-right">
         <Small>{grandTotal}</Small>
-        <ExtraSmall className="text-muted-foreground">{`${product.price} x ${quantity}`}</ExtraSmall>
+        {quantity > 1 && (
+          <ExtraSmall className="text-muted-foreground">{formattedPrice} x {quantity}</ExtraSmall>
+        )}
       </div>
     </Card>
   );
