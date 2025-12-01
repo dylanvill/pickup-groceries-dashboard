@@ -15,6 +15,7 @@ import Body from "../../components/typography/Body";
 import Strong from "../../components/typography/Strong";
 import { formatCurrency } from "../../utils/formatCurrency";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 
 // Dynamically import CartButton with SSR disabled
 const CartButton = dynamic(() => import("./CartButton"), {
@@ -24,10 +25,16 @@ const CartButton = dynamic(() => import("./CartButton"), {
 export function Cart() {
   const [isOpen, setIsOpen] = useState(false);
   const { items, getTotalPrice } = useCart();
+  const router = useRouter();
 
   const totalPrice = formatCurrency(getTotalPrice());
 
   const handleContinueShoppingClicked = () => {
+    setIsOpen(false);
+  };
+
+  const handleCheckoutClicked = () => {
+    router.push("/checkout");
     setIsOpen(false);
   };
 
@@ -65,7 +72,7 @@ export function Cart() {
         </div>
 
         <div className="px-4 mb-10 flex flex-col gap-y-2 mt-6">
-          <Button className="w-full">Checkout</Button>
+          <Button className="w-full" onClick={handleCheckoutClicked}>Checkout</Button>
           <Button
             variant="outline"
             className="w-full"

@@ -33,6 +33,7 @@ const getProducts = async (): Promise<ProductResponse> => {
 };
 
 const parseCreatedAt = (products: any[]) => {
+  if (!products) return [];
   return products.map((product) => ({
     ...product,
     createdAt: dayjs(product.createdAt),

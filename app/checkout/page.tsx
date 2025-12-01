@@ -7,19 +7,34 @@ import {
   CardHeader,
   CardTitle,
 } from "@/@shadcn/components/ui/card";
-import { Input } from "@/@shadcn/components/ui/input";
-import { Label } from "@/@shadcn/components/ui/label";
-import Image from "next/image";
 import CheckoutItem from "./_components/CheckoutItem";
 import { useCart } from "../../store/useCart";
 import Large from "../../components/typography/Large";
 import Strong from "../../components/typography/Strong";
 import { formatCurrency } from "../../utils/formatCurrency";
+import dynamic from "next/dynamic";
+import CustomerDetails from "./_components/CustomerDetails";
+import PickupInformation from "./_components/PickupInformation";
+
+// Create a client-only component for the total price
+const TotalPrice = dynamic(
+  () => {
+    const Component = () => {
+      const { getTotalPrice } = useCart();
+      const totalPrice = formatCurrency(getTotalPrice());
+      return (
+        <Large>
+          <Strong>{totalPrice}</Strong>
+        </Large>
+      );
+    };
+    return Promise.resolve(Component);
+  },
+  { ssr: false }
+);
 
 function CheckoutPage() {
-  const { items, getTotalPrice } = useCart();
-
-  const totalPrice = formatCurrency(getTotalPrice());
+  const { items } = useCart();
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -46,103 +61,15 @@ function CheckoutPage() {
                     <Large>
                       <Strong>Total</Strong>
                     </Large>
-                    <Large>
-                      <Strong>{totalPrice}</Strong>
-                    </Large>
+                    <TotalPrice />
                   </div>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* Customer Details */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Customer Details</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="firstName">First Name</Label>
-                  <Input id="firstName" placeholder="John" />
-                </div>
-                <div>
-                  <Label htmlFor="lastName">Last Name</Label>
-                  <Input id="lastName" placeholder="Doe" />
-                </div>
-              </div>
-              <div>
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="john.doe@example.com"
-                />
-              </div>
-              <div>
-                <Label htmlFor="phone">Phone</Label>
-                <div className="flex">
-                  <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                    +63
-                  </span>
-                  <Input
-                    id="phone"
-                    placeholder="9123456789"
-                    className="rounded-l-none"
-                  />
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Pickup Information */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Pickup Information</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div>
-                <Label>Pickup Address</Label>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Unit 2, 1234 Building, Etc Street, Makati City, Metro Manila
-                </p>
-              </div>
-              <div>
-                <Label>Business Name</Label>
-                <p className="text-sm text-muted-foreground mt-1">
-                  1234 Business
-                </p>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="pickupDate">Pickup Date</Label>
-                  <Input id="pickupDate" type="date" />
-                </div>
-                <div>
-                  <Label htmlFor="pickupTime">Pickup Time</Label>
-                  <Input id="pickupTime" type="time" />
-                </div>
-              </div>
-              <p className="text-xs text-muted-foreground">
-                Note: This is an estimated pickup time. It's okay if you don't
-                arrive exactly on time - this serves as a general estimate for
-                planning purposes.
-              </p>
-              <div>
-                <Label>Location Preview</Label>
-                <div className="mt-2 w-full h-48 bg-gray-100 rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center">
-                  <div className="text-center text-gray-500">
-                    <div className="text-sm font-medium">
-                      Google Maps Preview
-                    </div>
-                    <div className="text-xs mt-1">
-                      Map will be embedded here
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <CustomerDetails />
+          <PickupInformation />
 
           {/* Action Buttons */}
           <div className="space-y-3">
