@@ -4,7 +4,7 @@ import { Button } from "@shadcn/components/ui/button";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import Small from "@components/typography/Small";
 import Strong from "@components/typography/Strong";
-import ExtraSmall from "@components/typography/ExtraSmall";
+import AppExtraSmall from "@/components/typography/AppExtraSmall";
 import { CURRENCY } from "../../utils/constants";
 import Placeholder from "@/public/images/placeholder.png";
 import { useCart } from "../../store/useCart";
@@ -63,7 +63,7 @@ function CartItem({
             <Minus className="h-2 w-2" />
           </Button>
           <div className="w-4">
-            <ExtraSmall className="text-center">{quantity}</ExtraSmall>
+            <AppExtraSmall className="text-center">{quantity}</AppExtraSmall>
           </div>
           <Button
             variant="outline"

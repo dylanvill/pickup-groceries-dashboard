@@ -1,6 +1,6 @@
 import React from "react";
 
-function ExtraSmall({
+function AppExtraSmall({
   children,
   className,
 }: {
@@ -10,4 +10,4 @@ function ExtraSmall({
   return <p className={`text-xs font-normal ${className}`}>{children}</p>;
 }
 
-export default ExtraSmall;
+export default AppExtraSmall;

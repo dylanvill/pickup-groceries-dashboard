@@ -5,7 +5,7 @@ import CartItemModel from "@/models/CartItemModel";
 import { useMemo } from "react";
 import { formatCurrency } from "../../../utils/formatCurrency";
 import Small from "../../../components/typography/Small";
-import ExtraSmall from "../../../components/typography/ExtraSmall";
+import AppExtraSmall from "../../../components/typography/AppExtraSmall";
 import AppBody from "../../../components/typography/AppBody";
 import Strong from "../../../components/typography/Strong";
 
@@ -31,14 +31,14 @@ function CheckoutItem({ product, quantity }: CheckoutItemProps) {
         <AppBody className="font-medium">
           <Strong>{product.name}</Strong>
         </AppBody>
-        <ExtraSmall className="text-muted-foreground">
+        <AppExtraSmall className="text-muted-foreground">
           Quantity: {quantity}
-        </ExtraSmall>
+        </AppExtraSmall>
       </div>
       <div className="text-right">
         <Small>{grandTotal}</Small>
         {quantity > 1 && (
-          <ExtraSmall className="text-muted-foreground">{formattedPrice} x {quantity}</ExtraSmall>
+          <AppExtraSmall className="text-muted-foreground">{formattedPrice} x {quantity}</AppExtraSmall>
         )}
       </div>
     </Card>
