@@ -7,23 +7,29 @@ import PickupInformation from "./_components/PickupInformation";
 import CheckoutItemsSummary from "./_components/CheckoutItemsSummary";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { checkoutSchema, defaultValues, type CheckoutFormData } from "./schemas/checkoutSchema";
+import {
+  createCheckoutSchema,
+  defaultValues,
+  type CheckoutFormData,
+} from "./schemas/checkoutSchema";
 import { useRouter } from "next/navigation";
 
 function CheckoutPage() {
   const router = useRouter();
-  
+
   const form = useForm<CheckoutFormData>({
-    resolver: zodResolver(checkoutSchema),
+    resolver: zodResolver(createCheckoutSchema(false)),
     defaultValues,
+    mode: "onTouched", // Only validate after user touches fields
   });
+
 
   const onSubmit = async (data: CheckoutFormData) => {
     try {
       console.log("Order data:", data);
       // TODO: Implement actual order submission logic here
       // e.g., await submitOrder(data);
-      
+
       // For now, just log the data and redirect to success page
       router.push("/order-success");
     } catch (error) {
@@ -45,21 +51,19 @@ function CheckoutPage() {
 
         {/* Action Buttons */}
         <div className="space-y-3">
-          <Button 
-            type="submit" 
-            className="w-full" 
+          <Button
+            type="submit"
+            className="w-full"
             size="lg"
-            disabled={form.formState.isSubmitting}
-          >
+            disabled={form.formState.isSubmitting}>
             {form.formState.isSubmitting ? "Placing Order..." : "Place Order"}
           </Button>
 
-          <Button 
+          <Button
             type="button"
-            variant="outline" 
+            variant="outline"
             className="w-full"
-            onClick={handleContinueShopping}
-          >
+            onClick={handleContinueShopping}>
             Continue Shopping
           </Button>
         </div>

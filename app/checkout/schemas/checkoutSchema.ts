@@ -1,7 +1,7 @@
 import { z } from "zod";
 import dayjs from "dayjs";
 
-export const checkoutSchema = z.object({
+const baseCheckoutSchema = z.object({
   // Customer Details
   firstName: z
     .string()
@@ -24,6 +24,10 @@ export const checkoutSchema = z.object({
     .min(1, "Phone number is required")
     .regex(/^[0-9]{10}$/, "Phone number must be 10 digits"),
 
+  // Optional password fields
+  password: z.string().optional(),
+  confirmPassword: z.string().optional(),
+
   // Pickup Information
   pickupDate: z
     .string()
@@ -43,13 +47,39 @@ export const checkoutSchema = z.object({
   specialInstructions: z.string().optional(),
 });
 
-export type CheckoutFormData = z.infer<typeof checkoutSchema>;
+// Create schema with conditional password validation
+export const createCheckoutSchema = (requirePassword: boolean = false) => {
+  if (requirePassword) {
+    return baseCheckoutSchema
+      .extend({
+        password: z
+          .string()
+          .min(1, "Password is required")
+          .min(8, "Password must be at least 8 characters")
+          .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/, "Password must contain at least one uppercase letter, one lowercase letter, and one number"),
+        confirmPassword: z
+          .string()
+          .min(1, "Please confirm your password"),
+      })
+      .refine((data) => data.password === data.confirmPassword, {
+        message: "Passwords don't match",
+        path: ["confirmPassword"],
+      });
+  }
+  return baseCheckoutSchema;
+};
+
+export const checkoutSchema = baseCheckoutSchema;
+
+export type CheckoutFormData = z.infer<typeof baseCheckoutSchema>;
 
 export const defaultValues: Partial<CheckoutFormData> = {
   firstName: "",
   lastName: "",
   email: "",
   phone: "",
+  password: "",
+  confirmPassword: "",
   pickupDate: "",
   pickupTime: "",
   specialInstructions: "",
