@@ -4,7 +4,7 @@ import { Button } from "@shadcn/components/ui/button";
 import ProductModel from "@/models/ProductModel";
 import { AspectRatio } from "@shadcn/components/ui/aspect-ratio";
 import AppBody from "@/components/typography/AppBody";
-import Large from "@components/typography/Large";
+Import AppLarge from "@/components/typography/AppLarge";
 import { CURRENCY } from "@utils/constants";
 import { useCart } from "@store/useCart";
 import ProductImage from "./ProductImage";
@@ -38,10 +38,10 @@ function ProductCard({ product }: ProductCardProps) {
         <div className="space-y-2 flex-1">
           <AppBody className="mb-0">{product.name}</AppBody>
           <div className="flex items-center justify-between">
-            <Large>
+            <AppLarge>
               {CURRENCY}
               {product.price}
-            </Large>
+            </AppLarge>
           </div>
         </div>
       </CardContent>

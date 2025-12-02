@@ -7,7 +7,7 @@ import {
 } from "../../../@shadcn/components/ui/card";
 import CheckoutItem from "./CheckoutItem";
 import { useCart } from "../../../store/useCart";
-import Large from "../../../components/typography/Large";
+Import AppLarge from "../../../components/typography/AppLarge";
 import Strong from "../../../components/typography/Strong";
 import dynamic from "next/dynamic";
 import { formatCurrency } from "../../../utils/formatCurrency";
@@ -19,9 +19,9 @@ const TotalPrice = dynamic(
       const { getTotalPrice } = useCart();
       const totalPrice = formatCurrency(getTotalPrice());
       return (
-        <Large>
+        <AppLarge>
           <Strong>{totalPrice}</Strong>
-        </Large>
+        </AppLarge>
       );
     };
     return Promise.resolve(Component);
@@ -49,9 +49,9 @@ function CheckoutItemsSummary() {
           {/* Order Total */}
           <div className="space-y-2 mt-10">
             <div className="flex justify-between">
-              <Large>
+              <AppLarge>
                 <Strong>Total</Strong>
-              </Large>
+              </AppLarge>
               <TotalPrice />
             </div>
           </div>

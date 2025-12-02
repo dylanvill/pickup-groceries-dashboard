@@ -7,7 +7,7 @@ import CheckoutItem from "../../checkout/_components/CheckoutItem";
 import { formatCurrency } from "../../../utils/formatCurrency";
 import OrderDetailsCardTitle from "../../../components/shared/CardTitle/OrderDetailsCardTitle";
 import Small from "../../../components/typography/Small";
-import Large from "../../../components/typography/Large";
+Import AppLarge from "../../../components/typography/AppLarge";
 import Strong from "../../../components/typography/Strong";
 
 function OrderDetailsCard() {
@@ -39,12 +39,12 @@ function OrderDetailsCard() {
         </div>
 
         <div className="flex justify-between items-center mt-6">
-          <Large>
+          <AppLarge>
             <Strong>Total:</Strong>
-          </Large>
-          <Large>
+          </AppLarge>
+          <AppLarge>
             <Strong>{formatCurrency(1000.25)}</Strong>
-          </Large>
+          </AppLarge>
         </div>
       </CardContent>
     </Card>
