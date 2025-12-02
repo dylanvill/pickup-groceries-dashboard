@@ -1,13 +1,13 @@
 import React from "react";
 import { cn } from "@shadcn/lib/utils";
 
-interface BodyProps {
+interface AppBodyProps {
   children: React.ReactNode;
   className?: string;
 }
 
-function Body({ children, className }: BodyProps) {
+function AppBody({ children, className }: AppBodyProps) {
   return <p className={cn("text-sm text-dark", className)}>{children}</p>;
 }
 
-export default Body;
+export default AppBody;

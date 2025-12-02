@@ -6,7 +6,7 @@ import { useMemo } from "react";
 import { formatCurrency } from "../../../utils/formatCurrency";
 import Small from "../../../components/typography/Small";
 import ExtraSmall from "../../../components/typography/ExtraSmall";
-import Body from "../../../components/typography/Body";
+import AppBody from "../../../components/typography/AppBody";
 import Strong from "../../../components/typography/Strong";
 
 export type CheckoutItemProps = Omit<CartItemModel, "total">;
@@ -28,9 +28,9 @@ function CheckoutItem({ product, quantity }: CheckoutItemProps) {
         </AspectRatio>
       </div>
       <div className="flex-1">
-        <Body className="font-medium">
+        <AppBody className="font-medium">
           <Strong>{product.name}</Strong>
-        </Body>
+        </AppBody>
         <ExtraSmall className="text-muted-foreground">
           Quantity: {quantity}
         </ExtraSmall>

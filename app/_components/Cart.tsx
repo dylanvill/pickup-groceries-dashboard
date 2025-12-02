@@ -11,7 +11,7 @@ import { Separator } from "@shadcn/components/ui/separator";
 import CartHeader from "./CartHeader";
 import { useCart } from "../../store/useCart";
 import CartItem from "./CartItem";
-import Body from "../../components/typography/Body";
+import AppBody from "../../components/typography/AppBody";
 import Strong from "../../components/typography/Strong";
 import { formatCurrency } from "../../utils/formatCurrency";
 import dynamic from "next/dynamic";
@@ -63,12 +63,12 @@ export function Cart() {
         <Separator className="my-6" />
 
         <div className="flex justify-between px-4">
-          <Body>
+          <AppBody>
             <Strong>Total</Strong>
-          </Body>
-          <Body>
+          </AppBody>
+          <AppBody>
             <Strong>{totalPrice}</Strong>
-          </Body>
+          </AppBody>
         </div>
 
         <div className="px-4 mb-10 flex flex-col gap-y-2 mt-6">

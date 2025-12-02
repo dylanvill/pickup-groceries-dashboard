@@ -16,7 +16,7 @@ import { Label } from "../../../@shadcn/components/ui/label";
 import { Input } from "../../../@shadcn/components/ui/input";
 import { useFormContext } from "react-hook-form";
 import type { CheckoutFormData } from "../schemas/checkoutSchema";
-import Body from "../../../components/typography/Body";
+import AppBody from "../../../components/typography/AppBody";
 
 function PickupInformation() {
   const form = useFormContext<CheckoutFormData>();
@@ -29,13 +29,13 @@ function PickupInformation() {
       <CardContent className="space-y-4">
         <div>
           <Label>Pickup Address</Label>
-          <Body className="text-muted-foreground mt-1">
+          <AppBody className="text-muted-foreground mt-1">
             Unit 2, 1234 Building, Etc Street, Makati City, Metro Manila
-          </Body>
+          </AppBody>
         </div>
         <div>
           <Label>Business Name</Label>
-          <Body className="text-muted-foreground mt-1">1234 Business</Body>
+          <AppBody className="text-muted-foreground mt-1">1234 Business</AppBody>
         </div>
         
         <div className="grid grid-cols-2 gap-4">

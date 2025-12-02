@@ -3,7 +3,7 @@ import { ShoppingCart } from "lucide-react";
 import { Button } from "@shadcn/components/ui/button";
 import ProductModel from "@/models/ProductModel";
 import { AspectRatio } from "@shadcn/components/ui/aspect-ratio";
-import Body from "@components/typography/Body";
+import AppBody from "@/components/typography/AppBody";
 import Large from "@components/typography/Large";
 import { CURRENCY } from "@utils/constants";
 import { useCart } from "@store/useCart";
@@ -36,7 +36,7 @@ function ProductCard({ product }: ProductCardProps) {
 
       <CardContent className="p-4 flex-1 flex flex-col">
         <div className="space-y-2 flex-1">
-          <Body className="mb-0">{product.name}</Body>
+          <AppBody className="mb-0">{product.name}</AppBody>
           <div className="flex items-center justify-between">
             <Large>
               {CURRENCY}
