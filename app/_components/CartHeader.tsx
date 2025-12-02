@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { SheetHeader, SheetTitle } from "../../@shadcn/components/ui/sheet";
-import Heading from "../../components/typography/Heading";
+import AppHeading from "../../components/typography/AppHeading";
 import AppBody from "../../components/typography/AppBody";
 import { useCart } from "../../store/useCart";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
@@ -21,7 +21,7 @@ function CartHeader() {
       <VisuallyHidden>
         <SheetTitle>Your Cart</SheetTitle>
       </VisuallyHidden>
-      <Heading variant="h4">Your Cart</Heading>
+      <AppHeading variant="h4">Your Cart</AppHeading>
       <AppBody>{label}</AppBody>
     </SheetHeader>
   );
