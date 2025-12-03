@@ -7,7 +7,7 @@ import {
 } from "../../../@shadcn/components/ui/card";
 import CheckoutItem from "./CheckoutItem";
 import { useCart } from "../../../store/useCart";
-Import AppLarge from "../../../components/typography/AppLarge";
+import AppLarge from "../../../components/typography/AppLarge";
 import AppStrong from "../../../components/typography/AppStrong";
 import dynamic from "next/dynamic";
 import { formatCurrency } from "../../../utils/formatCurrency";

@@ -7,7 +7,7 @@ import CheckoutItem from "../../checkout/_components/CheckoutItem";
 import { formatCurrency } from "../../../utils/formatCurrency";
 import OrderDetailsCardTitle from "../../../components/shared/CardTitle/OrderDetailsCardTitle";
 import AppSmall from "../../../components/typography/AppSmall";
-Import AppLarge from "../../../components/typography/AppLarge";
+import AppLarge from "../../../components/typography/AppLarge";
 import AppStrong from "../../../components/typography/AppStrong";
 
 function OrderDetailsCard() {
