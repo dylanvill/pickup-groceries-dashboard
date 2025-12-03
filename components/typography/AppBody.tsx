@@ -7,7 +7,7 @@ interface AppBodyProps {
 }
 
 function AppBody({ children, className }: AppBodyProps) {
-  return <p className={cn("text-sm text-dark", className)}>{children}</p>;
+  return <p className={cn("text-base text-dark", className)}>{children}</p>;
 }
 
 export default AppBody;
