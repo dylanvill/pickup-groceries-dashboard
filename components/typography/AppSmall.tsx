@@ -1,12 +1,12 @@
 import React from "react";
 
-interface SmallProps {
+interface AppSmallProps {
   children: React.ReactNode;
   className?: string;
 }
 
-function Small({ children, className }: SmallProps) {
+function AppSmall({ children, className }: AppSmallProps) {
   return <p className={`text-sm font-regular ${className}`}>{children}</p>;
 }
 
-export default Small;
+export default AppSmall;

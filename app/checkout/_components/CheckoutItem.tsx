@@ -4,10 +4,10 @@ import { AspectRatio } from "../../../@shadcn/components/ui/aspect-ratio";
 import CartItemModel from "@/models/CartItemModel";
 import { useMemo } from "react";
 import { formatCurrency } from "../../../utils/formatCurrency";
-import Small from "../../../components/typography/Small";
+import AppSmall from "../../../components/typography/AppSmall";
 import AppExtraSmall from "../../../components/typography/AppExtraSmall";
 import AppBody from "../../../components/typography/AppBody";
-import Strong from "../../../components/typography/Strong";
+import AppStrong from "../../../components/typography/AppStrong";
 
 export type CheckoutItemProps = Omit<CartItemModel, "total">;
 
@@ -29,14 +29,14 @@ function CheckoutItem({ product, quantity }: CheckoutItemProps) {
       </div>
       <div className="flex-1">
         <AppBody className="font-medium">
-          <Strong>{product.name}</Strong>
+          <AppStrong>{product.name}</AppStrong>
         </AppBody>
         <AppExtraSmall className="text-muted-foreground">
           Quantity: {quantity}
         </AppExtraSmall>
       </div>
       <div className="text-right">
-        <Small>{grandTotal}</Small>
+        <AppSmall>{grandTotal}</AppSmall>
         {quantity > 1 && (
           <AppExtraSmall className="text-muted-foreground">{formattedPrice} x {quantity}</AppExtraSmall>
         )}

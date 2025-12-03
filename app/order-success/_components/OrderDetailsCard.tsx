@@ -6,9 +6,9 @@ import {
 import CheckoutItem from "../../checkout/_components/CheckoutItem";
 import { formatCurrency } from "../../../utils/formatCurrency";
 import OrderDetailsCardTitle from "../../../components/shared/CardTitle/OrderDetailsCardTitle";
-import Small from "../../../components/typography/Small";
+import AppSmall from "../../../components/typography/AppSmall";
 Import AppLarge from "../../../components/typography/AppLarge";
-import Strong from "../../../components/typography/Strong";
+import AppStrong from "../../../components/typography/AppStrong";
 
 function OrderDetailsCard() {
   return (
@@ -16,9 +16,9 @@ function OrderDetailsCard() {
       <CardHeader>
         <div className="flex items-center justify-between">
           <OrderDetailsCardTitle />
-          <Small className="text-muted-foreground font-mono">
+          <AppSmall className="text-muted-foreground font-mono">
             Order Number: 00001
-          </Small>
+          </AppSmall>
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -40,10 +40,10 @@ function OrderDetailsCard() {
 
         <div className="flex justify-between items-center mt-6">
           <AppLarge>
-            <Strong>Total:</Strong>
+            <AppStrong>Total:</AppStrong>
           </AppLarge>
           <AppLarge>
-            <Strong>{formatCurrency(1000.25)}</Strong>
+            <AppStrong>{formatCurrency(1000.25)}</AppStrong>
           </AppLarge>
         </div>
       </CardContent>

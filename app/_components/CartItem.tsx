@@ -2,8 +2,8 @@ import { Card } from "@shadcn/components/ui/card";
 import Image from "next/image";
 import { Button } from "@shadcn/components/ui/button";
 import { Minus, Plus, Trash2 } from "lucide-react";
-import Small from "@components/typography/Small";
-import Strong from "@components/typography/Strong";
+import AppSmall from "@/components/typography/AppSmall";
+import AppStrong from "@/components/typography/AppStrong";
 import AppExtraSmall from "@/components/typography/AppExtraSmall";
 import { CURRENCY } from "../../utils/constants";
 import Placeholder from "@/public/images/placeholder.png";
@@ -49,10 +49,10 @@ function CartItem({
           />
         </div>
         <div className="flex-1 mx-3">
-          <Small>
-            <Strong>{name}</Strong>
-          </Small>
-          <Small>{formattedPrice}</Small>
+          <AppSmall>
+            <AppStrong>{name}</AppStrong>
+          </AppSmall>
+          <AppSmall>{formattedPrice}</AppSmall>
         </div>
         <div className="flex items-center gap-1">
           <Button

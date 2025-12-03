@@ -8,7 +8,7 @@ import {
 import CheckoutItem from "./CheckoutItem";
 import { useCart } from "../../../store/useCart";
 Import AppLarge from "../../../components/typography/AppLarge";
-import Strong from "../../../components/typography/Strong";
+import AppStrong from "../../../components/typography/AppStrong";
 import dynamic from "next/dynamic";
 import { formatCurrency } from "../../../utils/formatCurrency";
 
@@ -20,7 +20,7 @@ const TotalPrice = dynamic(
       const totalPrice = formatCurrency(getTotalPrice());
       return (
         <AppLarge>
-          <Strong>{totalPrice}</Strong>
+          <AppStrong>{totalPrice}</AppStrong>
         </AppLarge>
       );
     };
@@ -50,7 +50,7 @@ function CheckoutItemsSummary() {
           <div className="space-y-2 mt-10">
             <div className="flex justify-between">
               <AppLarge>
-                <Strong>Total</Strong>
+                <AppStrong>Total</AppStrong>
               </AppLarge>
               <TotalPrice />
             </div>

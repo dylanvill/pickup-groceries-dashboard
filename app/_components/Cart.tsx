@@ -12,7 +12,7 @@ import CartHeader from "./CartHeader";
 import { useCart } from "../../store/useCart";
 import CartItem from "./CartItem";
 import AppBody from "../../components/typography/AppBody";
-import Strong from "../../components/typography/Strong";
+import AppStrong from "../../components/typography/AppStrong";
 import { formatCurrency } from "../../utils/formatCurrency";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
@@ -64,10 +64,10 @@ export function Cart() {
 
         <div className="flex justify-between px-4">
           <AppBody>
-            <Strong>Total</Strong>
+            <AppStrong>Total</AppStrong>
           </AppBody>
           <AppBody>
-            <Strong>{totalPrice}</Strong>
+            <AppStrong>{totalPrice}</AppStrong>
           </AppBody>
         </div>
 

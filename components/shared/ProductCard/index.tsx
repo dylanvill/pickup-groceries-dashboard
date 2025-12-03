@@ -9,8 +9,8 @@ import { CURRENCY } from "@utils/constants";
 import { useCart } from "@store/useCart";
 import ProductImage from "./ProductImage";
 import { toast } from "sonner";
-import Small from "../../typography/Small";
-import Strong from "../../typography/Strong";
+import AppSmall from "../../typography/AppSmall";
+import AppStrong from "../../typography/AppStrong";
 
 interface ProductCardProps {
   product: ProductModel;
@@ -25,7 +25,7 @@ function ProductCard({ product }: ProductCardProps) {
       quantity: 1,
       total: product.price,
     });
-    toast.success(<Small><Strong>{product.name}</Strong> has been added to your cart.</Small>);
+    toast.success(<AppSmall><AppStrong>{product.name}</AppStrong> has been added to your cart.</AppSmall>);
   };
 
   return (
