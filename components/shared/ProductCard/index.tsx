@@ -4,13 +4,13 @@ import { Button } from "@shadcn/components/ui/button";
 import ProductModel from "@/models/ProductModel";
 import { AspectRatio } from "@shadcn/components/ui/aspect-ratio";
 import AppBody from "@/components/typography/AppBody";
-Import AppLarge from "@/components/typography/AppLarge";
+import AppLarge from "@components/typography/AppLarge";
 import { CURRENCY } from "@utils/constants";
 import { useCart } from "@store/useCart";
 import ProductImage from "./ProductImage";
 import { toast } from "sonner";
-import AppSmall from "../../typography/AppSmall";
-import AppStrong from "../../typography/AppStrong";
+import AppSmall from "@components/typography/AppSmall";
+import AppStrong from "@components/typography/AppStrong";
 
 interface ProductCardProps {
   product: ProductModel;
