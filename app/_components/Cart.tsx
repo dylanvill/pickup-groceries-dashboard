@@ -13,9 +13,9 @@ import { useCart } from "../../store/useCart";
 import CartItem from "./CartItem";
 import AppBody from "../../components/typography/AppBody";
 import AppStrong from "../../components/typography/AppStrong";
-import { formatCurrency } from "../../utils/formatCurrency";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
+import useFormatCurrency from "../../hooks/useFormatCurrency";
 
 // Dynamically import CartButton with SSR disabled
 const CartButton = dynamic(() => import("./CartButton"), {
@@ -27,7 +27,7 @@ export function Cart() {
   const { items, getTotalPrice } = useCart();
   const router = useRouter();
 
-  const totalPrice = formatCurrency(getTotalPrice());
+  const totalPrice = useFormatCurrency(getTotalPrice());
 
   const handleContinueShoppingClicked = () => {
     setIsOpen(false);

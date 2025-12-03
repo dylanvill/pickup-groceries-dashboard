@@ -5,10 +5,9 @@ import { Minus, Plus, Trash2 } from "lucide-react";
 import AppSmall from "@/components/typography/AppSmall";
 import AppStrong from "@/components/typography/AppStrong";
 import AppExtraSmall from "@/components/typography/AppExtraSmall";
-import { CURRENCY } from "../../utils/constants";
 import Placeholder from "@/public/images/placeholder.png";
-import { useCart } from "../../store/useCart";
-import { formatCurrency } from "../../utils/formatCurrency";
+import { useCart } from "@/store/useCart";
+import useFormatCurrency from "@/hooks/useFormatCurrency";
 
 export interface CartItemProps {
   productId: number;
@@ -27,7 +26,7 @@ function CartItem({
 }: CartItemProps) {
   const { updateQuantity, removeFromCart } = useCart();
 
-  const formattedPrice = formatCurrency(price);
+  const formattedPrice = useFormatCurrency(price);
 
   const handleQuantity = (type: string, productId: number) => {
     if (type === "increase") {

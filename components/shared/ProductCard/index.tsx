@@ -6,8 +6,8 @@ import AppBody from "@/components/typography/AppBody";
 import AppLarge from "@components/typography/AppLarge";
 import { useCart } from "@store/useCart";
 import ProductImage from "./ProductImage";
-import { useFormatCurrency } from "../../../utils/formatCurrency";
-import useToast from "../../../hooks/useToast";
+import useToast from "@/hooks/useToast";
+import useFormatCurrency from "@/hooks/useFormatCurrency";
 
 interface ProductCardProps {
   product: ProductModel;
